@@ -1,0 +1,18 @@
+version: "3"
+services:
+  rabbitMQ:
+    image: rabbitmq:3.9.10-management
+    ports:
+      - "5673:5672"
+      - "15673:15672"
+  mysql:
+    image: mysql:5.7
+    platform: linux/amd64
+    ports:
+      - "3307:3306"
+    command:
+      --server_id=1513
+      --log-bin=mysql-bin
+      --binlog-ignore-db=mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: 123456
